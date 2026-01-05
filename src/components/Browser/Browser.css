@@ -1,8 +1,11 @@
 .browser {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
+  min-height: 200px;
   background: var(--bg-primary);
+  position: relative;
+  z-index: 3;
 }
 
 .browser-tabs {
@@ -332,13 +335,11 @@
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .browser {
-    position: fixed;
-    top: var(--header-height);
-    left: 0;
-    right: 0;
-    bottom: 60px;
-    z-index: 100;
+    position: static;
     background: var(--bg-primary);
+    max-height: none;
+    overflow: visible;
+    display: block;
   }
 
   .browser-tabs {

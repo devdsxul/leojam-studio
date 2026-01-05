@@ -39,18 +39,79 @@
 @media (max-width: 768px) {
   .welcome-screen {
     width: 100%;
-    min-height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
     height: auto;
     align-items: flex-start;
-    padding: 20px 16px 60px;
-    overflow: visible;
+    padding: 16px 16px 100px; /* Extra bottom padding for fixed button */
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
     position: relative;
   }
 
   .welcome-content {
     width: 100%;
     max-width: 100%;
-    padding: 16px;
+    padding: 12px;
+  }
+
+  .welcome-logo {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .welcome-content h1 {
+    font-size: 22px;
+    margin-bottom: 8px;
+  }
+
+  .welcome-content > p {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .feature {
+    padding: 12px 8px;
+  }
+
+  .feature-icon {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  .feature h3 {
+    font-size: 12px;
+    margin-bottom: 4px;
+  }
+
+  .feature p {
+    font-size: 10px;
+    display: none; /* Hide descriptions on mobile to save space */
+  }
+
+  /* Fixed start button at bottom */
+  .start-button {
+    position: fixed !important;
+    bottom: 20px;
+    left: 16px;
+    right: 16px;
+    width: calc(100% - 32px) !important;
+    padding: 16px 24px;
+    font-size: 18px;
+    z-index: 1000;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+    justify-content: center;
+  }
+
+  .shortcuts-hint {
+    display: none;
   }
 }
 
@@ -181,13 +242,11 @@ kbd {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .sidebar {
-    display: none;
-  }
-
   .main-content {
     padding-bottom: 60px;
     flex-direction: column;
+    position: relative;
+    overflow: visible;
   }
 
   .app-container {
@@ -203,6 +262,22 @@ kbd {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
   }
+
+  /* 移动端保留 Browser，改为纵向全宽 */
+  .sidebar {
+    display: block;
+    width: 100%;
+    min-width: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    z-index: 2;
+  }
+
+  .workspace {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 @media (max-width: 480px) {
@@ -210,47 +285,8 @@ kbd {
     grid-template-columns: 1fr;
   }
 
-  .welcome-content {
-    padding: 24px 16px;
-  }
-
-  .welcome-logo {
-    font-size: 36px;
-  }
-
-  .welcome-content h1 {
-    font-size: 24px;
-  }
-
-  .welcome-content > p {
-    font-size: 14px;
-    margin-bottom: 24px;
-  }
-
-  .feature {
-    padding: 16px 12px;
-  }
-
-  .feature-icon {
-    font-size: 24px;
-  }
-
-  .feature h3 {
-    font-size: 14px;
-  }
-
   .feature p {
-    font-size: 12px;
-  }
-
-  .start-button {
-    padding: 12px 32px;
-    font-size: 16px;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .shortcuts-hint {
-    display: none;
+    display: block; /* Show descriptions on very small screens in single column */
+    font-size: 11px;
   }
 }

@@ -152,6 +152,9 @@ class AudioEngine {
         toneInstrument = new Tone.PolySynth(Tone.Synth)
     }
 
+    // 默认连到母线，确保未绑定轨道的乐器也能立即发声
+    toneInstrument.connect(this.masterChannel)
+
     this.instruments.set(instrument.id, toneInstrument)
   }
 

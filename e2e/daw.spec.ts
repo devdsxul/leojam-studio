@@ -130,7 +130,8 @@ test.describe('leojam studio DAW 端到端测试', () => {
     expect(tabCount).toBeGreaterThanOrEqual(4)
 
     // 点击不同标签验证切换
-    await tabs.first().click()
+    await tabs.first().scrollIntoViewIfNeeded()
+    await tabs.first().click({ force: true })
     await expect(tabs.first()).toHaveClass(/active/)
   })
 
