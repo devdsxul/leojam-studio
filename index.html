@@ -8,15 +8,43 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <title>leojam studio - 嘻哈节拍工作站</title>
     <style>
-      /* Critical mobile scroll fix - applied before CSS loads */
+      /* Critical mobile scroll fix - highest priority */
       @media (max-width: 768px) {
-        html, body {
-          overflow-y: auto !important;
+        html {
+          height: 100% !important;
+          overflow-y: scroll !important;
+          overflow-x: hidden !important;
           -webkit-overflow-scrolling: touch !important;
-          touch-action: pan-y pinch-zoom !important;
+          touch-action: pan-y !important;
+          overscroll-behavior-y: auto !important;
+        }
+        body, #root {
+          min-height: 100% !important;
+          height: auto !important;
+          overflow: visible !important;
+          touch-action: pan-y !important;
+          position: relative !important;
+        }
+        .welcome-screen, .welcome-content {
+          touch-action: pan-y !important;
+          -webkit-user-select: auto !important;
         }
       }
     </style>
+    <script>
+      // Immediate mobile scroll fix before any other JS runs
+      (function() {
+        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+        if (isMobile) {
+          document.documentElement.style.cssText = 'height:100%!important;overflow-y:scroll!important;-webkit-overflow-scrolling:touch!important;touch-action:pan-y!important;';
+          document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.cssText = 'min-height:100%!important;height:auto!important;overflow:visible!important;touch-action:pan-y!important;';
+            var root = document.getElementById('root');
+            if (root) root.style.cssText = 'min-height:100%!important;height:auto!important;overflow:visible!important;touch-action:pan-y!important;';
+          });
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
