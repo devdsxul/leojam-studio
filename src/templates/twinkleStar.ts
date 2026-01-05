@@ -182,6 +182,7 @@ export const createTwinkleStarTemplate = (): ProjectTemplate => {
           pan: 0,
           mute: false,
           solo: false,
+          armed: false,
           color: '#FFD700',
           clips: [
             {
@@ -205,6 +206,7 @@ export const createTwinkleStarTemplate = (): ProjectTemplate => {
           pan: 0,
           mute: false,
           solo: false,
+          armed: false,
           color: '#87CEEB',
           clips: [
             {
