@@ -77,12 +77,23 @@ html, body, #root {
 
 /* Mobile: allow scrolling */
 @media (max-width: 768px) {
-  html, body, #root {
-    height: auto;
-    min-height: 100%;
+  html {
+    height: 100%;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
+  }
+
+  body {
+    min-height: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  #root {
+    min-height: 100%;
+    height: auto;
+    overflow: visible;
   }
 }
 
