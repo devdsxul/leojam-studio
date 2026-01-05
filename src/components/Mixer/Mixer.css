@@ -1,0 +1,290 @@
+.mixer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-primary);
+}
+
+.mixer-header {
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.mixer-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.mixer-channels {
+  display: flex;
+  flex: 1;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 12px;
+  gap: 8px;
+}
+
+.mixer-channel {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.mixer-channel.master {
+  border-color: var(--accent-primary);
+}
+
+.channel-label {
+  padding: 8px;
+  text-align: center;
+  border-top: 3px solid var(--accent-primary);
+  background: var(--bg-secondary);
+}
+
+.channel-label.master-label {
+  border-top-color: var(--accent-warning);
+  background: linear-gradient(to bottom, rgba(245, 158, 11, 0.1), transparent);
+}
+
+.channel-name {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.channel-number {
+  display: block;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.channel-effects {
+  padding: 4px;
+  min-height: 80px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.effects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.effect-slot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 4px;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+  font-size: 9px;
+}
+
+.effect-slot.filled {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.remove-effect {
+  width: 14px;
+  height: 14px;
+  padding: 0;
+  font-size: 12px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1;
+}
+
+.remove-effect:hover {
+  color: white;
+  background: transparent;
+}
+
+.add-effect-select {
+  width: 100%;
+  padding: 2px 4px;
+  font-size: 10px;
+  background: var(--bg-tertiary);
+  border: 1px dashed var(--border-color);
+}
+
+.channel-pan {
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.channel-pan label {
+  display: block;
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.pan-knob {
+  width: 100%;
+}
+
+.pan-value {
+  display: block;
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.channel-fader-section {
+  display: flex;
+  flex: 1;
+  padding: 8px;
+  gap: 4px;
+  min-height: 200px;
+}
+
+.meter-container {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.meter {
+  width: 6px;
+  height: 100%;
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.meter-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top,
+    var(--accent-success) 0%,
+    var(--accent-success) 60%,
+    var(--accent-warning) 80%,
+    var(--accent-danger) 100%
+  );
+  transition: height 0.05s;
+}
+
+.fader-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.fader {
+  writing-mode: vertical-lr;
+  direction: rtl;
+  width: 100%;
+  height: 100%;
+  -webkit-appearance: slider-vertical;
+}
+
+.db-display {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 9px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.channel-buttons {
+  display: flex;
+  gap: 4px;
+  padding: 8px;
+  justify-content: center;
+}
+
+.channel-btn {
+  width: 28px;
+  height: 24px;
+  padding: 0;
+  font-size: 11px;
+  font-weight: bold;
+  background: var(--bg-tertiary);
+  border-radius: 2px;
+}
+
+.channel-btn:hover:not(:disabled) {
+  background: var(--bg-hover);
+}
+
+.channel-btn.mute.active {
+  background: var(--accent-danger);
+  color: white;
+}
+
+.channel-btn.solo.active {
+  background: var(--accent-warning);
+  color: black;
+}
+
+.channel-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .mixer {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    bottom: 60px;
+  }
+
+  .mixer-header {
+    padding: 8px 12px;
+  }
+
+  .mixer-header h3 {
+    font-size: 14px;
+  }
+
+  .mixer-channels {
+    padding: 8px;
+    gap: 6px;
+  }
+
+  .mixer-channel {
+    min-width: 60px;
+  }
+
+  .channel-label {
+    padding: 6px;
+  }
+
+  .channel-name {
+    font-size: 10px;
+  }
+
+  .channel-effects {
+    min-height: 60px;
+    padding: 3px;
+  }
+
+  .channel-fader-section {
+    min-height: 150px;
+    padding: 6px;
+  }
+
+  .channel-btn {
+    width: 24px;
+    height: 20px;
+    font-size: 10px;
+  }
+}

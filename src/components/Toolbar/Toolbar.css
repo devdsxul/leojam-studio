@@ -1,0 +1,72 @@
+.toolbar {
+  height: var(--toolbar-height);
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+}
+
+.toolbar-views {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.toolbar-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.toolbar-btn.active {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.toolbar-icon {
+  font-size: 16px;
+}
+
+.toolbar-label {
+  font-size: 13px;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.toolbar-separator {
+  width: 1px;
+  height: 24px;
+  background: var(--border-color);
+  margin: 0 8px;
+}
+
+@media (max-width: 900px) {
+  .toolbar-label {
+    display: none;
+  }
+}
+
+/* Mobile: hide entire toolbar since we have bottom nav */
+@media (max-width: 768px) {
+  .toolbar {
+    display: none;
+  }
+}
