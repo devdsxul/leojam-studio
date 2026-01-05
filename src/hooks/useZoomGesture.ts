@@ -43,6 +43,8 @@ export function useZoomGesture(
   }
 
   const handleTouchStart = useCallback((e: TouchEvent) => {
+    // Only intercept two-finger gestures for zoom
+    // Single finger should be allowed for scrolling
     if (e.touches.length === 2) {
       e.preventDefault()
       touchStartDistance.current = getTouchDistance(e.touches)

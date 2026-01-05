@@ -27,11 +27,22 @@
 /* Welcome Screen */
 .welcome-screen {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+/* Mobile: enable scrolling for welcome screen */
+@media (max-width: 768px) {
+  .welcome-screen {
+    height: auto;
+    min-height: 100vh;
+    align-items: flex-start;
+    padding: 20px 0 40px;
+    overflow: visible;
+  }
 }
 
 .welcome-content {
@@ -167,6 +178,21 @@ kbd {
 
   .main-content {
     padding-bottom: 60px;
+    flex-direction: column;
+  }
+
+  .app-container {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .workspace {
+    flex: 1;
+    min-height: calc(100vh - 150px);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -189,6 +215,30 @@ kbd {
 
   .welcome-content > p {
     font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .feature {
+    padding: 16px 12px;
+  }
+
+  .feature-icon {
+    font-size: 24px;
+  }
+
+  .feature h3 {
+    font-size: 14px;
+  }
+
+  .feature p {
+    font-size: 12px;
+  }
+
+  .start-button {
+    padding: 12px 32px;
+    font-size: 16px;
+    width: 100%;
+    justify-content: center;
   }
 
   .shortcuts-hint {
