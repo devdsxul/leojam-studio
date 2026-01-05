@@ -78,22 +78,37 @@ html, body, #root {
 /* Mobile: allow scrolling */
 @media (max-width: 768px) {
   html {
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
+    height: 100% !important;
+    overflow-x: hidden !important;
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-y !important;
+    overscroll-behavior: auto !important;
   }
 
   body {
-    min-height: 100%;
-    height: auto;
-    overflow: visible;
+    min-height: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    touch-action: pan-y !important;
+    overscroll-behavior: auto !important;
   }
 
   #root {
-    min-height: 100%;
-    height: auto;
-    overflow: visible;
+    min-height: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    touch-action: pan-y !important;
+  }
+
+  /* Ensure welcome screen is scrollable */
+  .welcome-screen {
+    touch-action: pan-y !important;
+    -webkit-touch-callout: default !important;
+  }
+
+  .welcome-content {
+    touch-action: pan-y !important;
   }
 }
 
