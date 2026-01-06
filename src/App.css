@@ -33,6 +33,7 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(180deg, #000000 0%, #1c1c1e 100%);
+  overflow-y: auto;
 }
 
 /* Mobile: enable scrolling for welcome screen */

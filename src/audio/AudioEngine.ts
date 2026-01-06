@@ -61,8 +61,6 @@ class AudioEngine {
     this.masterChannel.volume.value = 0 // 0 dB = unity gain
 
     this.isInitialized = true
-
-    console.log('[AudioEngine] Initialized, context state:', Tone.context.state)
   }
 
   setBpm(bpm: number): void {
@@ -495,6 +493,7 @@ class AudioEngine {
         } else if (clip.patternId) {
           const pattern = patterns.find((p) => p.id === clip.patternId)
           const instrument = this.instruments.get(track.instrumentId || '')
+
           if (!pattern || !instrument) return
 
           type ClipNoteEvent = { time: number; note: Note; duration: number; velocity: number }

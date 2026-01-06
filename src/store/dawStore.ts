@@ -369,8 +369,11 @@ export const useDAWStore = create<DAWState>()(
     },
 
     newProject: () => {
-      // 清理现有资源
-      audioEngine.dispose()
+      // 停止播放并重置 Transport
+      audioEngine.stop()
+
+      // 清理现有资源（保留核心音频链路）
+      audioEngine.reset()
 
       const defaultProject: Project = {
         id: uuidv4(),
@@ -402,8 +405,11 @@ export const useDAWStore = create<DAWState>()(
     loadTemplate: (templateFn) => {
       const template = templateFn()
 
-      // 清理现有资源
-      audioEngine.dispose()
+      // 停止播放并重置 Transport
+      audioEngine.stop()
+
+      // 清理现有资源（保留核心音频链路）
+      audioEngine.reset()
 
       const project: Project = {
         id: uuidv4(),
