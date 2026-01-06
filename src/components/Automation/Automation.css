@@ -10,28 +10,34 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-color);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .automation-header h3 {
   margin: 0;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .add-lane-btn {
-  padding: 6px 12px;
-  font-size: 12px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
   background: var(--accent-primary);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .add-lane-btn:hover {
-  background: var(--accent-primary-hover);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-sm);
 }
 
 .automation-lanes {
@@ -41,19 +47,27 @@
 }
 
 .automation-lane {
-  background: var(--bg-panel);
-  border-radius: 6px;
-  margin-bottom: 8px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  margin-bottom: 10px;
   overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.automation-lane:hover {
+  border-color: var(--border-light);
 }
 
 .lane-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-color);
+  gap: 10px;
+  padding: 12px 14px;
+  background: transparent;
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .lane-color {
@@ -82,28 +96,31 @@
 }
 
 .lane-btn {
-  width: 28px;
-  height: 28px;
+  width: 30px;
+  height: 30px;
   padding: 0;
   background: var(--bg-hover);
   border: none;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   color: var(--text-secondary);
   font-size: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .lane-btn:hover {
   background: var(--bg-tertiary);
   color: var(--text-primary);
+  transform: scale(1.05);
 }
 
 .lane-btn.active {
   background: var(--accent-primary);
   color: white;
+  box-shadow: var(--shadow-sm);
 }
 
 .lane-btn.danger:hover {
@@ -125,23 +142,25 @@
 
 .automation-point {
   position: absolute;
-  width: 12px;
-  height: 12px;
-  margin-left: -6px;
-  margin-top: -6px;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  margin-top: -7px;
   background: var(--accent-primary);
   border: 2px solid white;
   border-radius: 50%;
   cursor: grab;
   z-index: 10;
+  transition: all 0.15s ease;
+  box-shadow: var(--shadow-sm);
 }
 
 .automation-point:hover {
-  transform: scale(1.2);
+  transform: scale(1.25);
 }
 
 .automation-point.selected {
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.4), var(--shadow-sm);
 }
 
 .lane-empty {
@@ -194,16 +213,22 @@
 }
 
 .modal-content {
-  background: var(--bg-panel);
-  border-radius: 8px;
-  padding: 20px;
-  min-width: 300px;
-  max-width: 400px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  min-width: 320px;
+  max-width: 420px;
+  box-shadow: var(--shadow-lg);
 }
 
 .modal-content h4 {
-  margin: 0 0 16px 0;
-  font-size: 16px;
+  margin: 0 0 20px 0;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .form-group {

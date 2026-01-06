@@ -40,16 +40,29 @@ class AudioEngine {
 
     await Tone.start()
 
-    // Reconnect master chain to ensure proper audio routing after Tone.start()
+    // Ensure Tone.js context is running
+    if (Tone.context.state !== 'running') {
+      await Tone.context.resume()
+    }
+
+    // Rebuild audio chain from scratch to ensure proper connection
     this.masterLimiter.disconnect()
     this.masterChannel.disconnect()
+    this.analyser.disconnect()
+    this.masterMeter.disconnect()
 
+    // Reconnect in correct order: channel -> limiter -> destination
     this.masterLimiter.toDestination()
     this.masterChannel.connect(this.masterLimiter)
     this.masterChannel.connect(this.analyser)
     this.masterChannel.connect(this.masterMeter)
 
+    // Ensure master channel volume is audible
+    this.masterChannel.volume.value = 0 // 0 dB = unity gain
+
     this.isInitialized = true
+
+    console.log('[AudioEngine] Initialized, context state:', Tone.context.state)
   }
 
   setBpm(bpm: number): void {

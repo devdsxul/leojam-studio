@@ -7,8 +7,10 @@
 
 .playlist-header {
   display: flex;
-  background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border-color);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .track-headers {
@@ -28,20 +30,28 @@
 }
 
 .add-track-btn {
-  padding: 4px 12px;
+  padding: 6px 14px;
   font-size: 12px;
+  font-weight: 500;
   background: var(--accent-primary);
+  border-radius: var(--radius-md);
+  transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.add-track-btn:hover {
+  transform: scale(1.05);
+  box-shadow: var(--shadow-sm);
 }
 
 .track-header {
   display: flex;
   align-items: center;
-  padding: 8px 12px;
+  padding: 10px 14px;
   background: var(--bg-panel);
   border-bottom: 1px solid var(--border-color);
   border-left: 4px solid transparent;
   cursor: pointer;
-  transition: background 0.1s;
+  transition: all 0.15s ease;
 }
 
 .track-header:hover {
@@ -50,6 +60,7 @@
 
 .track-header.selected {
   background: var(--bg-selected);
+  border-left-color: var(--accent-primary);
 }
 
 .track-info {
@@ -79,22 +90,25 @@
 }
 
 .track-btn {
-  width: 24px;
-  height: 20px;
+  width: 26px;
+  height: 22px;
   padding: 0;
   font-size: 11px;
-  font-weight: bold;
+  font-weight: 600;
   background: var(--bg-tertiary);
-  border-radius: 2px;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .track-btn:hover {
   background: var(--bg-hover);
+  transform: scale(1.05);
 }
 
 .track-btn.active {
   background: var(--accent-warning);
   color: black;
+  box-shadow: 0 2px 6px rgba(255, 159, 10, 0.3);
 }
 
 .timeline {
@@ -195,17 +209,18 @@
   position: absolute;
   top: 4px;
   bottom: 4px;
-  border-radius: 4px;
+  border-radius: var(--radius-md);
   cursor: pointer;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.1s;
+  transition: all 0.15s cubic-bezier(0.25, 0.1, 0.25, 1);
+  box-shadow: var(--shadow-sm);
 }
 
 .clip:hover {
-  transform: scale(1.01);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transform: scale(1.02);
+  box-shadow: var(--shadow-md);
 }
 
 .clip-name {
