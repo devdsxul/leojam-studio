@@ -37,7 +37,18 @@ class AudioEngine {
 
   async initialize(): Promise<void> {
     if (this.isInitialized) return
+
     await Tone.start()
+
+    // Reconnect master chain to ensure proper audio routing after Tone.start()
+    this.masterLimiter.disconnect()
+    this.masterChannel.disconnect()
+
+    this.masterLimiter.toDestination()
+    this.masterChannel.connect(this.masterLimiter)
+    this.masterChannel.connect(this.analyser)
+    this.masterChannel.connect(this.masterMeter)
+
     this.isInitialized = true
   }
 
